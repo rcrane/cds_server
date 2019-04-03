@@ -1,0 +1,18 @@
+[package]
+name = "cds_server"
+version = "0.1.0"
+authors = ["Franz Gregor <franz.gregor@tu-dresden.de>"]
+edition = "2018"
+description = "A simple REST-API server forwards requests to binaries and measures their execution time"
+
+[dependencies]
+error-chain = "*"
+clap = "*"
+dirs = "*"
+iron = "*"
+router = "*"
+base64 = "*"
+serde = { version = "*", features = ["derive"] }
+serde_json = "*"
+log = "*"
+env_logger = "*"
