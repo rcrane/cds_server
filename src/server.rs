@@ -250,10 +250,10 @@ impl iron::Handler for InvokeHandler {
         resp_body.duration = duration.as_secs() * 1000 * 1000 + duration.subsec_nanos() as u64 / 1000;
 
         if let Ok(stdout) = stdout_str.lock() {
-            resp_body.stdout = stdout.to_string();
+            resp_body.stdout = base64::encode(stdout);
         };
         if let Ok(stderr) = stderr_str.lock() {
-            resp_body.stderr = stderr.to_string();
+            resp_body.stderr = base64::encode(stderr);
         }
 
         Ok(Response::with((status::Ok, serde_json::to_string(&resp_body).unwrap())))
