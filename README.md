@@ -3,7 +3,14 @@
 This is the CDS LAB Evaluation Server.
 A tiny web service that invokes programs on the command line and measures their execution time.
 
+## Requirements
+
+curl, gcc, docker
+
 ## Compilation
+
+You can either compile on your host machine directly on inside a Docker container.
+Use `docker build` and `docker run` or follow this manual for host-side compilation:
 
 The server is implemented in [Rust](www.rust-lang.org).
 To be able to compile it you have to have Rust installed.
@@ -74,12 +81,12 @@ The server exposes a single API-endpoint: `/run`.
 
 If the HTTP request can not be matched to another endpoint the server will return a human readable message given a short introduction and listing the program names the server is able to invoke/run.
 
-### Run a program: `/run/:program`
+### Run a program: `/run/program`
 
 The run endpoint instructs the server to start a program and measure its execution time.
 The request's body contains the program input that will be written to the program's stdin stream.
 The response contains the program's exit status/return code, the collected output of its `stdout` and `stderr` streams, and the measured runtime in microseconds or an error message.
-Fields `stdin`, `stdout`, and `stderr` are base64 encoded to prevent issues with the protocols json-encoding.
+Fields `stdin`, `stdout`, and `stderr` are *base64* encoded to prevent issues with the protocols json-encoding.
 
 * Method: POST
 * Example Request Body:
@@ -100,4 +107,10 @@ Fields `stdin`, `stdout`, and `stderr` are base64 encoded to prevent issues with
         "duration": 412,
         "error": null
     }
+  ```
+
+### Using CURL
+
+  ```bash
+    $ curl --header "Content-Type: application/json"   --request POST   --data '{"stdin":"aGVsbG8gd29ybGQK"}'   http://localhost:80/run/echo
   ```
