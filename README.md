@@ -3,6 +3,24 @@
 This is the CDS LAB Evaluation Server.
 A tiny web service that invokes programs on the command line and measures their execution time.
 
+## Compilation
+
+The server is implemented in [Rust](www.rust-lang.org).
+To be able to compile it you have to have Rust installed.
+You can install Rust with rustup:
+
+```bash
+curl https://sh.rustup.rs -sSf | sh
+```
+
+To compile the server execute the following command:
+
+```bash
+cargo build --release
+```
+
+The compiled binary will be in the `target/release` directory.
+
 ## Configuration
 
 The server reads its configuration from a json-encoded file.
