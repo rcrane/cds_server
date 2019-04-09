@@ -33,6 +33,17 @@ For example, the following configuration will instruct the server to invoke `/bi
 ]
 ```
 
+Note that, the configuration is json-encoded.
+Thus, you have to make sure it contains valid json.
+When adding another entry, the first one has to be terminated with a comma, while the last entry is not allowed to be terminated with a comma:
+
+```json
+[
+	["echo", "/bin/cat"],
+    ["my-program", "/usr/bin/my-program"]
+]
+```
+
 ## Command-line arguments
 
 The server knows two command-line arguments:
