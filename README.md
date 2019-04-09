@@ -112,5 +112,5 @@ Fields `stdin`, `stdout`, and `stderr` are *base64* encoded to prevent issues wi
 ### Using CURL
 
   ```bash
-    $ curl --header "Content-Type: application/json"   --request POST   --data '{"stdin":"aGVsbG8gd29ybGQK"}'   http://localhost:80/run/echo
+    $ curl --header "Content-Type: application/json" --request POST --data '{"stdin":"aGVsbG8gd29ybGQK"}'   http://localhost:80/run/echo
   ```
